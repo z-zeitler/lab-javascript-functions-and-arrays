@@ -10,29 +10,38 @@ function maxOfTwoNumbers(a, b) {
   }
 
   if (a=b) {
-    return "numbers are equal";
+    return a;
   }
 }
 
 // Iteration #2: Find longest word
 const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
 
-/*
+
 function findLongestWord(exArray) {
   let n = 0;
+  let answer = 'b';
 
-  while (exArray) {
-    let word = exArray.pop();
+  if (exArray.length == 0) {
+    return null;
+  }
+
+  if (exArray.length == 1) {
+    return exArray[0];
+  }
+
+  for (let word of exArray) {
       if (word.length > n) {
         n = word.length;
+
+        answer = word;
       }
   }
 
-  return word;
+  return answer;
   
   // ex-array.toString()
 }
-*/
 
 // Iteration #3: Calculate the sum
 
@@ -40,11 +49,13 @@ function findLongestWord(exArray) {
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
 function sumNumbers(numArray) {
-  sum = 0;
+  let sum = 0;
 
-  while (numArray) {
-    sum += numArray.pop();
+  for (let num of numArray) {
+    sum += num;
   }
+
+  return sum;
 }
 
 
@@ -53,15 +64,37 @@ function sumNumbers(numArray) {
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
 function averageNumbers(numArray) {
-  length = numArray.length;
+  if (numArray.length == 0) {
+    return null;
+  }
 
-  return (sumNumbers(numArray)/length);
+  let length = numArray.length;
+
+  let avg = sumNumbers(numArray)/length;
+
+  return avg;
 }
-
-
 
 // Level 2: Array of strings
 const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
+
+function averageWordLength(wordArray) {
+  let sum = 0;
+  let denominator = wordArray.length;
+
+  if (wordArray.length == 0) {
+    return null;
+  }
+
+  for (let word of wordArray) {
+    sum += word.length;
+  }
+
+  let avgLength = sum/denominator;
+
+  return avgLength;
+}
+
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
@@ -81,9 +114,10 @@ const wordsUnique = [
 function uniquifyArray(words) {
   let unique = [];
 
-  if(word.length === 0) {
-    return null;
-  }
+  if(words.length === 0) {
+      return null;
+    }
+  
 
   /*
   while(words) {
@@ -111,11 +145,17 @@ function doesWordExist(haystack, needle) {
   if (haystack.length === 0) {
     return null;
   }
+
+  else if (haystack.includes(needle) == false) {
+    return false;
+  }
+
   for (let word of haystack) {
     if (word === needle) {
       return true;
     }
   }
+  
 }
 
 // Iteration #7: Count repetition
@@ -132,6 +172,23 @@ const wordsCount = [
   'disobedience',
   'matter'
 ];
+
+function howManyTimes(arr, word) {
+if (arr.length == 0) {
+  return 0;
+}
+
+let num = 0;
+
+  for (let ele of arr) {
+
+    if (ele == word) {
+      num += 1;
+    }
+  }
+
+  return num;
+}
 
 // Iteration #8: Bonus
 
